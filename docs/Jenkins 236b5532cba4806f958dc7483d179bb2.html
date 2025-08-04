@@ -1,0 +1,710 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Jenkins</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.highlight-default_background {
+	color: rgba(50, 48, 44, 1);
+}
+.highlight-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.highlight-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(115, 114, 110, 1);
+	fill: rgba(115, 114, 110, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(205, 60, 58, 1);
+	fill: rgba(205, 60, 58, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(248, 248, 247, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(248, 243, 252, 1);
+}
+.block-color-pink_background {
+	background: rgba(252, 241, 246, 1);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-default { background-color: rgba(84, 72, 49, 0.08); }
+.select-value-color-gray { background-color: rgba(84, 72, 49, 0.15); }
+.select-value-color-brown { background-color: rgba(210, 162, 141, 0.35); }
+.select-value-color-orange { background-color: rgba(224, 124, 57, 0.27); }
+.select-value-color-yellow { background-color: rgba(236, 191, 66, 0.39); }
+.select-value-color-green { background-color: rgba(123, 183, 129, 0.27); }
+.select-value-color-blue { background-color: rgba(93, 165, 206, 0.27); }
+.select-value-color-purple { background-color: rgba(168, 129, 197, 0.27); }
+.select-value-color-pink { background-color: rgba(225, 136, 179, 0.27); }
+.select-value-color-red { background-color: rgba(244, 171, 159, 0.4); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="236b5532-cba4-806f-958d-c7483d179bb2" class="page sans"><header><div class="page-header-icon undefined"><img class="icon" src="jenkins-svgrepo-com_2.svg"/></div><h1 class="page-title">Jenkins</h1><p class="page-description"></p></header><div class="page-body"><h1 id="23fb5532-cba4-8087-83dc-f9fb92c9ac16" class=""><mark class="highlight-red">Jenkins</mark></h1><p id="23fb5532-cba4-80b5-9a7b-ef962273abfb" class="">Jenkins is an open-source automation server used in professional software development to build, test, and deploy applications. It enables continuous integration and continuous delivery (CI/CD) by automating the steps in the software development lifecycle, improving code quality and speeding up delivery.</p><p id="23fb5532-cba4-80b2-9b25-e8664c0e5232" class="">In Short : Jenkins is a CI/CD automation tool that helps teams build, test, and deploy software efficiently.</p><hr id="240b5532-cba4-809e-bae3-ce1230b67da0"/><h1 id="240b5532-cba4-8042-96ad-c9604d899096" class=""><mark class="highlight-red">CI/CD and Testing in the SDLC</mark></h1><p id="240b5532-cba4-8071-8340-c5dbf91a2b1f" class="">In development lifecycle, we follow a structured Software Development Life Cycle (SDLC) process that includes the following phases:</p><ol type="1" id="240b5532-cba4-80f8-9837-e22752d96775" class="numbered-list" start="1"><li>Requirement Gathering</li></ol><ol type="1" id="240b5532-cba4-8024-b142-f6bdc9f034be" class="numbered-list" start="2"><li>Planning</li></ol><ol type="1" id="240b5532-cba4-802a-b38f-fb9a052015b4" class="numbered-list" start="3"><li>Designing</li></ol><ol type="1" id="240b5532-cba4-807d-9c72-c5e3083fa2af" class="numbered-list" start="4"><li><mark class="highlight-red">Development</mark></li></ol><ol type="1" id="240b5532-cba4-8056-af69-fe1863c94fc9" class="numbered-list" start="5"><li><mark class="highlight-red">Build Process</mark></li></ol><ol type="1" id="240b5532-cba4-80df-b288-f78035a13819" class="numbered-list" start="6"><li><mark class="highlight-red">Testing</mark></li></ol><ol type="1" id="240b5532-cba4-80a8-b61f-c53c8c87e80c" class="numbered-list" start="7"><li><mark class="highlight-red">Code Review</mark></li></ol><ol type="1" id="240b5532-cba4-80bc-b1d8-fcbe0f37c4c7" class="numbered-list" start="8"><li><mark class="highlight-red">Deployment</mark></li></ol><ol type="1" id="240b5532-cba4-80ad-8f6d-d8e9ba746034" class="numbered-list" start="9"><li>Maintenance</li></ol><p id="240b5532-cba4-808c-b54f-e79e63a5bc60" class="">From development to deployment, we implement CI/CD (Continuous Integration and Continuous Deployment) practices using tools like Jenkins. This enables us to automate the building, testing, and deployment of applications efficiently.</p><h2 id="240b5532-cba4-802b-a0c1-d1a1546c44d7" class="">Testing Strategy</h2><ul id="240b5532-cba4-8027-bfbc-f45268bf14c2" class="bulleted-list"><li style="list-style-type:disc"><strong>Unit Testing - </strong>Testing individual components or functions of the code in isolation to ensure they work as expected.</li></ul><ul id="240b5532-cba4-806a-bce4-d7751c6947df" class="bulleted-list"><li style="list-style-type:disc"><strong>Integration Testing - </strong>Verifies that different modules or services work together correctly when combined.</li></ul><ul id="240b5532-cba4-8023-98fb-f5b9eaae74cb" class="bulleted-list"><li style="list-style-type:disc"><strong>System Testing - </strong>Tests the complete, integrated system to validate that it meets the specified requirements.</li></ul><p id="240b5532-cba4-80b8-bb17-feb7dfba7afd" class="">These types of tests are executed within the CI/CD pipeline, typically in development or staging environments.</p><p id="240b5532-cba4-80d5-9cb8-e89ce1a8a281" class="">In addition,</p><ul id="240b5532-cba4-802d-9c15-ed96b6160700" class="bulleted-list"><li style="list-style-type:disc"><strong>Alpha Testing</strong> – Performed internally to validate functionality before external exposure.</li></ul><ul id="240b5532-cba4-80e7-a00b-d14ee34e26a5" class="bulleted-list"><li style="list-style-type:disc"><strong>Beta Testing</strong> – Conducted by a limited group of external users in a controlled setting.</li></ul><hr id="240b5532-cba4-80f4-a047-f33e69e71be9"/><h1 id="240b5532-cba4-804e-bc57-c53b0ffd767d" class=""><mark class="highlight-red">Jenkins CI/CD Workflow (with GitHub Integration)</mark></h1><p id="240b5532-cba4-8040-82ee-ed87f8ec7d36" class="">Here&#x27;s a typical CI/CD workflow using Jenkins with GitHub:</p><ol type="1" id="240b5532-cba4-8083-ae3a-f091e2392c17" class="numbered-list" start="1"><li>Code Push<p id="240b5532-cba4-80c6-8745-f0d2978501b5" class="">A developer pushes code to a GitHub repository.</p></li></ol><ol type="1" id="240b5532-cba4-80de-83d5-d515024aaeba" class="numbered-list" start="2"><li>Trigger Build<ul id="240b5532-cba4-80fd-af6b-ebd63b61067e" class="bulleted-list"><li style="list-style-type:disc">A webhook is configured in the GitHub repo (under Settings → Webhooks) pointing to:<p id="240b5532-cba4-80b3-a89f-fa3079e4266a" class=""><code>http://&lt;jenkins-server&gt;:8080/github-webhook/</code></p></li></ul><ul id="240b5532-cba4-80d0-806f-fb265bb3ba19" class="bulleted-list"><li style="list-style-type:disc">This webhook notifies Jenkins whenever there is a code change (push event).</li></ul><ul id="240b5532-cba4-8032-9924-e69f5c4282c7" class="bulleted-list"><li style="list-style-type:disc">Alternatively, Jenkins can be set up to poll the repository at regular intervals to check for changes.</li></ul></li></ol><ol type="1" id="240b5532-cba4-8010-8fc4-f3ad39f228f1" class="numbered-list" start="3"><li>Build<ul id="240b5532-cba4-80d0-a267-f1204b81770b" class="bulleted-list"><li style="list-style-type:disc">Jenkins starts a build process using tools like:<ul id="240b5532-cba4-806e-a3f2-f467056f84a1" class="bulleted-list"><li style="list-style-type:circle">Maven</li></ul><ul id="240b5532-cba4-800f-8316-d87a2a5ec767" class="bulleted-list"><li style="list-style-type:circle">Gradle</li></ul><ul id="240b5532-cba4-80d6-8d9e-e65cf6ce5ff2" class="bulleted-list"><li style="list-style-type:circle">Ant</li></ul></li></ul><ul id="240b5532-cba4-8023-bb43-de2c383d5bc0" class="bulleted-list"><li style="list-style-type:disc">These tools compile the code and generate build artifacts. (Artifacts are nothing but the executable code or object (.jar, .war, .exe))</li></ul></li></ol><ol type="1" id="240b5532-cba4-80cc-ac1d-fb51618a05c8" class="numbered-list" start="4"><li>Testing<ul id="240b5532-cba4-8042-b751-ee6921bbf2e6" class="bulleted-list"><li style="list-style-type:disc">Automated tests run as part of the pipeline using tools such as:<ul id="240b5532-cba4-807d-92ea-c68cdba8f443" class="bulleted-list"><li style="list-style-type:circle">Selenium (for UI/functional testing)</li></ul><ul id="240b5532-cba4-80a1-86e7-f785fdf3a01d" class="bulleted-list"><li style="list-style-type:circle">Mocha (for JavaScript unit testing)</li></ul></li></ul><ul id="240b5532-cba4-804e-908f-efb1970657c8" class="bulleted-list"><li style="list-style-type:disc">If the tests pass, the pipeline continues.</li></ul><ul id="240b5532-cba4-8012-a9f8-d921797a0468" class="bulleted-list"><li style="list-style-type:disc">If the tests fail, Jenkins can:<ul id="240b5532-cba4-8008-8c19-d44eeed4584f" class="bulleted-list"><li style="list-style-type:circle">Send failure details to Jira (via plugins or integrations).</li></ul><ul id="240b5532-cba4-80bc-a4f4-dd64f14c424e" class="bulleted-list"><li style="list-style-type:circle">Notify developers via email or messaging tools.</li></ul></li></ul></li></ol><ol type="1" id="240b5532-cba4-803e-9219-c6bd37b4ea13" class="numbered-list" start="5"><li>Deployment<ul id="240b5532-cba4-8082-8b8c-c541db77bf45" class="bulleted-list"><li style="list-style-type:disc">If the build and tests are successful, Jenkins proceeds to deploy the application to a staging or production environment.</li></ul></li></ol><ol type="1" id="240b5532-cba4-8054-a5e9-f4ea54a92772" class="numbered-list" start="6"><li>Continuous Integration / Continuous Deployment (CI/CD)<ul id="240b5532-cba4-8043-a525-f9bdfef20139" class="bulleted-list"><li style="list-style-type:disc">This entire automated process of building, testing, and deploying is known as CI/CD.</li></ul><ul id="240b5532-cba4-8013-9711-e21cb6cec909" class="bulleted-list"><li style="list-style-type:disc">It ensures rapid, safe, and consistent delivery of software.</li></ul></li></ol><hr id="240b5532-cba4-8022-9f2b-e04be7e25c36"/><h1 id="240b5532-cba4-80f5-aa59-d4f4664ce960" class=""><mark class="highlight-red">Jenkins Installation</mark></h1><ul id="240b5532-cba4-8005-9fb6-fdf4b29e4179" class="bulleted-list"><li style="list-style-type:disc"><strong>Debian/Ubuntu - </strong></li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="240b5532-cba4-8098-94fc-c650593b8e94" class="code code-wrap"><code class="language-Bash" style="white-space:pre-wrap;word-break:break-all">sudo apt update
+sudo apt install fontconfig openjdk-21-jre openjdk-21-jdk
+sudo wget -O /etc/apt/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+echo &quot;deb [signed-by=/etc/apt/keyrings/jenkins-keyring.asc]&quot; \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list &gt; /dev/null
+sudo apt-get update
+sudo apt-get install jenkins</code></pre><p id="240b5532-cba4-801c-85f0-e6876d8a61de" class="">More Information -</p><figure id="240b5532-cba4-809c-b094-e982ed72a045"><a href="https://www.jenkins.io/doc/book/installing/" class="bookmark source"><div class="bookmark-info"><div class="bookmark-text"><div class="bookmark-title">Installing Jenkins</div><div class="bookmark-description">Jenkins – an open source automation server which enables developers around the world to reliably build, test, and deploy their software</div></div><div class="bookmark-href"><img src="https://www.jenkins.io/apple-touch-icon.png" class="icon bookmark-icon"/>https://www.jenkins.io/doc/book/installing/</div></div><img src="https://www.jenkins.io/images/logo-title-opengraph.png" class="bookmark-image"/></a></figure><hr id="240b5532-cba4-80cc-886c-e809124a16bd"/><h1 id="240b5532-cba4-80f4-bdaa-da62a11887c2" class=""><mark class="highlight-red">Jenkins Workspace</mark></h1><p id="240b5532-cba4-8027-bc0c-f347a99d421f" class="">The Jenkins workspace is the directory on the Jenkins server where the files related to a specific build job are checked out, built, and tested.</p><p id="240b5532-cba4-800e-a9a3-f3536e228d77" class="">When Jenkins runs a job (a build), it needs a place to work, a folder where it:</p><ul id="240b5532-cba4-802c-b2c6-c7121389f9df" class="bulleted-list"><li style="list-style-type:disc">Downloads the code (from GitHub, GitLab, etc.)</li></ul><ul id="240b5532-cba4-80dd-9851-dca2e0a96358" class="bulleted-list"><li style="list-style-type:disc">Compiles the code</li></ul><ul id="240b5532-cba4-80f9-8e1b-cebbf60c07be" class="bulleted-list"><li style="list-style-type:disc">Runs tests</li></ul><ul id="240b5532-cba4-8011-b101-c75c83084a38" class="bulleted-list"><li style="list-style-type:disc">Creates build files (like <code>.jar</code>, <code>.war</code>, <code>.zip</code>)</li></ul><ul id="240b5532-cba4-80dd-896a-d737a0e3eab5" class="bulleted-list"><li style="list-style-type:disc">Stores temporary files</li></ul><p id="240b5532-cba4-80e7-88a4-dc6174d2eb9c" class="">This working folder is called the workspace.</p><h2 id="240b5532-cba4-80e7-8acf-dd6a83b31870" class="">What Happens Inside the Workspace?</h2><p id="240b5532-cba4-801a-9628-d2690d021485" class="">Suppose we have a Jenkins job called <code>build-java-app</code>:</p><ol type="1" id="240b5532-cba4-80f1-923c-f2dc4953bb6b" class="numbered-list" start="1"><li>Developer pushes code to GitHub.</li></ol><ol type="1" id="240b5532-cba4-80cc-8d82-c9cc3ebe4a9e" class="numbered-list" start="2"><li>Jenkins job is triggered.</li></ol><ol type="1" id="240b5532-cba4-8069-9a9d-c0efaee197e2" class="numbered-list" start="3"><li>Inside the workspace:<ul id="240b5532-cba4-80ee-b62c-c25948dcbbd0" class="bulleted-list"><li style="list-style-type:disc">Jenkins pulls the latest code from GitHub.</li></ul><ul id="240b5532-cba4-80a7-bba0-cdafc82ddfdc" class="bulleted-list"><li style="list-style-type:disc">Compiles <code>.java</code> files into <code>.class</code> files.</li></ul><ul id="240b5532-cba4-8036-acd8-d8945d20bce6" class="bulleted-list"><li style="list-style-type:disc">Runs test cases.</li></ul><ul id="240b5532-cba4-8071-b6bb-c3b686cf7690" class="bulleted-list"><li style="list-style-type:disc">Generates <code>.jar</code> or <code>.war</code> files.</li></ul><ul id="240b5532-cba4-809c-a384-f855e278d5e1" class="bulleted-list"><li style="list-style-type:disc">Saves the build artifacts.</li></ul></li></ol><hr id="240b5532-cba4-806c-9bb1-c5bfd929cf66"/><h1 id="240b5532-cba4-803d-ae7a-c724d844f40c" class=""><mark class="highlight-red">Getting Started With Jenkins</mark></h1><h2 id="245b5532-cba4-801f-a472-d393417936f1" class="">Deploying a Simple Java Application Using Jenkins</h2><h3 id="245b5532-cba4-808f-bebd-e480fed48585" class="">1. Create a Git Repository</h3><ul id="245b5532-cba4-80aa-bb89-e546a66735bc" class="bulleted-list"><li style="list-style-type:disc">Create a new Git repository and commit a basic Java file named <code>myfile.java</code>.<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="245b5532-cba4-8081-9ad6-dee3b3bb0981" class="code code-wrap"><code class="language-Bash" style="white-space:pre-wrap;word-break:break-all">public class myfile {
+    public static void main(String[] args) {
+        System.out.println(&quot;Hello, World!&quot;);
+    }
+}</code></pre></li></ul><h3 id="245b5532-cba4-80ab-bd3a-d195249e7062" class="">2. Access Jenkins</h3><ul id="245b5532-cba4-8003-9872-c4bc703f7530" class="bulleted-list"><li style="list-style-type:disc">Open your Jenkins server:<p id="245b5532-cba4-8048-a141-db1e25197970" class=""><code>http://&lt;jenkins-server-ip&gt;:8080</code></p></li></ul><h3 id="245b5532-cba4-808b-913c-da438f8f96b7" class="">3. Create a New Jenkins Job</h3><ul id="245b5532-cba4-804f-9741-d7bd1053c98d" class="bulleted-list"><li style="list-style-type:disc">Click New Item<ul id="245b5532-cba4-8030-a56e-f667729d8464" class="bulleted-list"><li style="list-style-type:circle">Item Name: <code>java-project-build</code></li></ul><ul id="245b5532-cba4-801f-be52-f7e891d5bd4f" class="bulleted-list"><li style="list-style-type:circle">Project Type: Freestyle Project</li></ul></li></ul><h3 id="245b5532-cba4-80e0-bd58-c21ffccaadca" class="">4. General Configuration</h3><ul id="245b5532-cba4-80e1-a4ea-c81188c0e6cb" class="bulleted-list"><li style="list-style-type:disc">Optionally, add a Description for the project under the General section.</li></ul><h3 id="245b5532-cba4-80f4-bcb3-fc11f5c2ac35" class="">5. Source Code Management</h3><ul id="245b5532-cba4-8067-b402-fdb3868e6703" class="bulleted-list"><li style="list-style-type:disc">Under Source Code Management, select Git<ul id="245b5532-cba4-80d3-aeb3-c1a88d1a7ff8" class="bulleted-list"><li style="list-style-type:circle">Paste your repository URL containing <code>myfile.java</code></li></ul><ul id="245b5532-cba4-800c-8da4-c43bd204e61e" class="bulleted-list"><li style="list-style-type:circle"><a href="https://github.com/harshkhalkar/node.git">https://github.com/harshkhalkar/node.git</a></li></ul></li></ul><h3 id="245b5532-cba4-8027-b3a2-da61f22fd56d" class="">6. Add Build Step</h3><ul id="245b5532-cba4-8048-9413-e63dfc169da5" class="bulleted-list"><li style="list-style-type:disc">Scroll to Build section<ul id="245b5532-cba4-8092-bc35-e4302d8a7be3" class="bulleted-list"><li style="list-style-type:circle">Add a Build Step → <code>Execute Shell</code></li></ul><ul id="245b5532-cba4-806f-8067-dfcae2d20b5a" class="bulleted-list"><li style="list-style-type:circle">Enter the following commands:</li></ul><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="245b5532-cba4-80e4-abdf-fbeea7da0b5e" class="code code-wrap"><code class="language-Bash" style="white-space:pre-wrap;word-break:break-all">javac myfile.java
+java myfile</code></pre></li></ul><h3 id="245b5532-cba4-806f-9a1e-df12176329f0" class="">7. Save and Run the Job</h3><ul id="245b5532-cba4-807f-a1bd-d48fc6c36764" class="bulleted-list"><li style="list-style-type:disc">Click Save</li></ul><ul id="245b5532-cba4-80c7-a899-c1e7aa422801" class="bulleted-list"><li style="list-style-type:disc">Click Build Now to trigger the job manually</li></ul><ul id="245b5532-cba4-800c-b020-e7d416297f2a" class="bulleted-list"><li style="list-style-type:disc">Check the Console Output to verify successful compilation and execution</li></ul><hr id="245b5532-cba4-8025-aa99-cb641f1bb0e0"/><h2 id="244b5532-cba4-80a8-83c8-d942b03673ec" class="">Deploying a Node.js Application Using Jenkins</h2><h3 id="245b5532-cba4-8025-8da7-d7fb8abb16a6" class="">1. Install Node.js Plugin in Jenkins</h3><ul id="245b5532-cba4-804d-8cd9-dc1f2f707853" class="bulleted-list"><li style="list-style-type:disc">To run a Node.js app, first install the NodeJS plugin from Jenkins Plugin Manager.<figure id="245b5532-cba4-802d-ae97-f0f2316379f7" class="image"><a href="1.png"><img style="width:682.0023193359375px" src="1.png"/></a></figure></li></ul><h3 id="245b5532-cba4-80a7-8d9f-ffbe13d50510" class="">2. Configure Node.js in Jenkins</h3><ul id="245b5532-cba4-80a2-8a52-c1a1e3dac68d" class="bulleted-list"><li style="list-style-type:disc">Navigate to:<p id="245b5532-cba4-8063-b214-c6fb0c0f14b5" class=""><code>Manage Jenkins → Tools → NodeJS Installation</code></p></li></ul><ul id="245b5532-cba4-80c2-bee7-cb023b73119f" class="bulleted-list"><li style="list-style-type:disc">Click Add NodeJS<ul id="245b5532-cba4-80d4-be57-fa6d3c8f5b5f" class="bulleted-list"><li style="list-style-type:circle">Name the installation (e.g., <code>NodeJS 18</code>)</li></ul><ul id="245b5532-cba4-808a-8634-df0652be0dae" class="bulleted-list"><li style="list-style-type:circle">Select the NodeJS version from the dropdown<p id="245b5532-cba4-808b-be87-cf070261b404" class=""><em>(You can verify version on your terminal using </em><em><code>node -v</code></em><em>)</em></p><figure id="245b5532-cba4-8097-bab8-de6b16d51b74" class="image"><a href="image.png"><img style="width:653.9931030273438px" src="image.png"/></a></figure><figure id="245b5532-cba4-80e1-8435-f4106bca0bfb" class="image"><a href="8.png"><img style="width:654.02783203125px" src="8.png"/></a></figure></li></ul></li></ul><h3 id="245b5532-cba4-8008-a2c1-d53a3b659337" class="">3. Configure SSH Credentials and SSH Site</h3><ul id="245b5532-cba4-80d5-9d6e-f52f2a268b9c" class="bulleted-list"><li style="list-style-type:disc">Go to:<p id="245b5532-cba4-80a0-b2fc-ef19d4aa032b" class=""><code>Manage Jenkins → Credentials → System → Add Credentials</code></p><ul id="245b5532-cba4-803c-881b-c009254c3991" class="bulleted-list"><li style="list-style-type:circle">Kind: SSH Username with private key</li></ul><ul id="245b5532-cba4-80e9-895d-cc167a750363" class="bulleted-list"><li style="list-style-type:circle">Provide your username and private key</li></ul></li></ul><figure id="245b5532-cba4-806f-9d4b-e6bf9c0520a1" class="image"><a href="9.png"><img style="width:709.96533203125px" src="9.png"/></a></figure><ul id="245b5532-cba4-802b-846b-fffbcfcd43d6" class="bulleted-list"><li style="list-style-type:disc">Now, go to:<p id="245b5532-cba4-803a-be3d-f7e4ac12bf23" class=""><code>Manage Jenkins → System</code></p><p id="245b5532-cba4-80ab-b435-d0a617fde4d5" class="">Scroll down to SSH Sites</p><ul id="245b5532-cba4-80aa-af27-eee3ba8fcb80" class="bulleted-list"><li style="list-style-type:circle">Add Hostname, Port, and select the credential you just added.</li></ul></li></ul><figure id="245b5532-cba4-80ae-acef-dde139e1d5e4" class="image"><a href="11.png"><img style="width:709.9768676757812px" src="11.png"/></a></figure><h3 id="245b5532-cba4-80fc-91e2-ca82a3f2b205" class="">4. Create a New Jenkins Job</h3><ul id="245b5532-cba4-8070-9081-f868277e2cd8" class="bulleted-list"><li style="list-style-type:disc">Click New Item<ul id="245b5532-cba4-806f-a70c-dc806afcecf7" class="bulleted-list"><li style="list-style-type:circle">Item Name: <code>mynode-app</code></li></ul><ul id="245b5532-cba4-802e-9bbf-ca0b466831e1" class="bulleted-list"><li style="list-style-type:circle">Project Type: Freestyle Project</li></ul></li></ul><figure id="245b5532-cba4-80a2-8c67-c5d3a1ff2c27" class="image"><a href="3.png"><img style="width:709.96533203125px" src="3.png"/></a></figure><h3 id="245b5532-cba4-80fe-b560-da20a23f7f02" class="">5. Configure Source Code Management (SCM)</h3><ul id="245b5532-cba4-80ad-bec5-d53417fe5af4" class="bulleted-list"><li style="list-style-type:disc">In the job configuration:<ul id="245b5532-cba4-809e-8b0b-fc160505c181" class="bulleted-list"><li style="list-style-type:circle">Add a short Description</li></ul><ul id="245b5532-cba4-8047-8188-ea1a5331b3c4" class="bulleted-list"><li style="list-style-type:circle">Scroll down to Source Code Management<ul id="245b5532-cba4-8031-af09-eb93b8103611" class="bulleted-list"><li style="list-style-type:square">Select Git</li></ul><ul id="245b5532-cba4-804b-8f70-ecb96f4c7410" class="bulleted-list"><li style="list-style-type:square">Paste your repository URL</li></ul></li></ul></li></ul><figure id="245b5532-cba4-80d0-8063-e9546eb0093f" class="image"><a href="4.png"><img style="width:709.9768676757812px" src="4.png"/></a></figure><h3 id="245b5532-cba4-801d-894b-e588902728e3" class="">6. Configure Build Triggers</h3><ul id="245b5532-cba4-8004-b240-cae56f82b44c" class="bulleted-list"><li style="list-style-type:disc">Under Build Triggers, select:<p id="245b5532-cba4-8033-8221-f033083dce1e" class=""><code>GitHub hook trigger for GITScm polling</code></p></li></ul><figure id="245b5532-cba4-801d-9864-fa04abc8f809" class="image"><a href="image%201.png"><img style="width:709.96533203125px" src="image%201.png"/></a></figure><h3 id="245b5532-cba4-8085-b694-dc9fb3ab51a3" class="">7. Configure Build Environment</h3><ul id="245b5532-cba4-80c2-bb84-ea13673c81d7" class="bulleted-list"><li style="list-style-type:disc">Under Build Environment:<ul id="245b5532-cba4-8036-be22-f6dc149baae1" class="bulleted-list"><li style="list-style-type:circle">Check Provide Node &amp; npm bin/folder to PATH<ul id="245b5532-cba4-8001-9661-da5a486cbe9f" class="bulleted-list"><li style="list-style-type:square">Select the NodeJS version you configured earlier</li></ul></li></ul><ul id="245b5532-cba4-80c9-957e-d4832843c2d0" class="bulleted-list"><li style="list-style-type:circle">Enable SSH Agent<ul id="245b5532-cba4-80d8-94a5-d1676ff70f5e" class="bulleted-list"><li style="list-style-type:square">Select the SSH credential you added</li></ul></li></ul></li></ul><figure id="245b5532-cba4-80b5-bea3-fdf191a91ea9" class="image"><a href="17.png"><img style="width:709.96533203125px" src="17.png"/></a></figure><h3 id="245b5532-cba4-807d-8cf5-c27770f573b2" class="">8. Add Build Step</h3><ul id="245b5532-cba4-80f7-9df2-fc60fc0ab0dc" class="bulleted-list"><li style="list-style-type:disc">Add Build Step:<p id="245b5532-cba4-80d4-b487-c302c7cc1ccf" class=""><code>Execute shell script on remote host using ssh</code></p><ul id="245b5532-cba4-8094-a9a0-cde9541be6dc" class="bulleted-list"><li style="list-style-type:circle">Choose SSH Site</li></ul><ul id="245b5532-cba4-8083-9efc-d658102521a9" class="bulleted-list"><li style="list-style-type:circle">Add the following command:</li></ul><h2 id="245b5532-cba4-8096-9608-f883dd9cfcb0" class="">Non-Containerized App:</h2><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="245b5532-cba4-80e4-9799-cc1a26ae1345" class="code code-wrap"><code class="language-Bash" style="white-space:pre-wrap;word-break:break-all">mkdir -p /node
+git init
+git pull &lt;github-repo-link&gt;
+sudo npm install
+pm2 start index.js || pm2 restart index.js</code></pre><figure id="245b5532-cba4-808c-a46e-cfb071b24649" class="image"><a href="13.png"><img style="width:681.9907836914062px" src="13.png"/></a></figure><h3 id="245b5532-cba4-8006-9376-e588d59e1cf8" class="">Containerized App:</h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="245b5532-cba4-802b-9802-c4ae8b802417" class="code code-wrap"><code class="language-Bash" style="white-space:pre-wrap;word-break:break-all">mkdir -p /node
+git init
+git pull &lt;github-repo-link&gt;
+sudo docker build -t myapp .
+sudo docker run -d -p 3000:3000 --name nodeapp1 myapp</code></pre><p id="245b5532-cba4-80e2-b8fa-d7764102747c" class=""><strong>Note</strong>: Give Jenkins permission to run Docker commands:</p><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="245b5532-cba4-80fd-be42-d67660027ef8" class="code code-wrap"><code class="language-Bash" style="white-space:pre-wrap;word-break:break-all">sudo usermod -aG docker jenkins
+
+# OR
+
+sudo visudo
+# Add the following line:
+jenkins ALL=(ALL) NOPASSWD:ALL</code></pre></li></ul><h3 id="245b5532-cba4-8045-9ecb-c5fbf1192aab" class="">9. Setup GitHub Webhook</h3><ul id="245b5532-cba4-80a9-b5e3-d5292d130645" class="bulleted-list"><li style="list-style-type:disc">In your GitHub repository:<ul id="245b5532-cba4-808c-8852-fbb472921033" class="bulleted-list"><li style="list-style-type:circle">Go to <code>Settings → Webhooks → Add Webhook</code></li></ul><ul id="245b5532-cba4-8051-92c2-d36d172b7a01" class="bulleted-list"><li style="list-style-type:circle">Payload URL: <code>http://&lt;jenkins-ip&gt;:8080/github-webhook/</code></li></ul><ul id="245b5532-cba4-807d-9455-d69d059400ec" class="bulleted-list"><li style="list-style-type:circle">Save the webhook</li></ul></li></ul><figure id="245b5532-cba4-804e-88bd-e4c21b7bc660" class="image"><a href="15.png"><img style="width:709.9768676757812px" src="15.png"/></a></figure><h3 id="245b5532-cba4-8045-8364-ca0ceeac8782" class="">10. Push Code and Trigger Build</h3><ul id="245b5532-cba4-8086-a787-c34a57c86fd2" class="bulleted-list"><li style="list-style-type:disc">Push your code to GitHub. Jenkins will automatically trigger a build via the webhook.</li></ul><figure id="245b5532-cba4-8041-9d3e-d1127c610c9d" class="image"><a href="18.png"><img style="width:709.9768676757812px" src="18.png"/></a></figure><h3 id="245b5532-cba4-80c1-8a84-e7811011a25b" class="">11. Access Your App</h3><ul id="245b5532-cba4-800b-bdb5-dce4dd08d342" class="bulleted-list"><li style="list-style-type:disc">Use your server IP and port to access the app:<p id="245b5532-cba4-809a-a4ee-d460aa7fcb4a" class=""><code>http://&lt;server-ip&gt;:3000/</code></p></li></ul><figure id="245b5532-cba4-80c3-a37f-fd2f5a0bd345" class="image"><a href="fba5c747-f86a-4249-a65d-d028800aacba.png"><img style="width:709.984375px" src="fba5c747-f86a-4249-a65d-d028800aacba.png"/></a></figure><h3 id="245b5532-cba4-807d-98a8-ce0fddb4697b" class="">On LiveServer - </h3><script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" integrity="sha512-7Z9J3l1+EYfeaPKcGXu3MS/7T+w19WtKQY/n+xzmw4hZhJ9tyYmcUS+4QqAlzhicE5LAfMQSF3iFTK9bQdTxXg==" crossorigin="anonymous" referrerPolicy="no-referrer"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism.min.css" integrity="sha512-tN7Ec6zAFaVSG3TpNAKtk4DOHNpSwKHxxrsiw4GHKESGPs5njn/0sMCUMl2svV4wo4BK/rCP7juYz+zx+l6oeQ==" crossorigin="anonymous" referrerPolicy="no-referrer"/><pre id="245b5532-cba4-800d-8e34-cab2924a31bf" class="code code-wrap"><code class="language-Bash" style="white-space:pre-wrap;word-break:break-all">yum install nodejs -y
+node --version
+npm --version
+npm install -g pm2</code></pre></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
