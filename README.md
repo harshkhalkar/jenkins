@@ -11,6 +11,9 @@ jenkins/
 ├── docs/
 │   ├── index.html               # Web view embedding Jenkins-Learnings.pdf
 ```
-
+---
 [Click here to view Jenkins Learnings (PDF)](Jenkins-Learnings.pdf)
+---
 [Click here to view Jenkins Learnings (HTML)](https://harshkhalkar.github.io/jenkins/)
+---
+
