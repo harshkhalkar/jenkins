@@ -9,4 +9,5 @@ jenkins/
 ├── LICENSE
 ├── README.md
 ├── docs/
-│   ├── ![index.html](https://harshkhalkar.github.io/jenkins/)               # Web view embedding Jenkins-Learnings.pdf
+│   ├── index.html               # Web view embedding Jenkins-Learnings.pdf
+```
